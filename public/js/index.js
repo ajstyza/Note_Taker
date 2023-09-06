@@ -1,15 +1,15 @@
-let noteTitle;
-let noteText;
-let saveNoteBtn;
-let newNoteBtn;
-let noteList;
+let nTitle;
+let nTxt;
+let saveBtn;
+let newBtn;
+let nList;
 
 if (window.location.pathname === '/notes') {
-  noteTitle = document.querySelector('.note-title');
-  noteText = document.querySelector('.note-textarea');
-  saveNoteBtn = document.querySelector('.save-note');
-  newNoteBtn = document.querySelector('.new-note');
-  noteList = document.querySelectorAll('.list-container .list-group');
+  nTitle = document.querySelector('.note-title');
+  nTxt = document.querySelector('.note-textarea');
+  saveBtn = document.querySelector('.save-note');
+  newBtn = document.querySelector('.new-note');
+  nList = document.querySelectorAll('.list-container .list-group');
 }
 
 
@@ -53,22 +53,22 @@ const renderActiveNote = () => {
   hide(saveNoteBtn);
 
   if (activeNote.note_id) {
-    noteTitle.setAttribute('readonly', true);
-    noteText.setAttribute('readonly', true);
-    noteTitle.value = activeNote.title;
-    noteText.value = activeNote.text;
+    nTitle.setAttribute('readonly', true);
+    nTxt.setAttribute('readonly', true);
+    nTitle.value = activeNote.title;
+    nTxt.value = activeNote.text;
   } else {
-    noteTitle.removeAttribute('readonly');
-    noteText.removeAttribute('readonly');
-    noteTitle.value = '';
-    noteText.value = '';
+    nTitle.removeAttribute('readonly');
+    nTxt.removeAttribute('readonly');
+    nTitle.value = '';
+    nTxt.value = '';
   }
 };
 
 const handleNoteSave = () => {
   const newNote = {
-    title: noteTitle.value,
-    text: noteText.value,
+    title: nTitle.value,
+    text: nTxt.value,
   };
   saveNote(newNote).then(() => {
     getAndRenderNotes();
